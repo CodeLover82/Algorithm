@@ -2,10 +2,9 @@
 
 주로 답의 최솟값과 최댓값을 알고있을 경우에 사용한다.
 
-이분법의 전제 조건 : 오름차순으로 정렬되어 있다.
-
-- lower_bound -
-
+조건  : 오름차순 정렬.
+	
+< lower_bound >
 : v[i - 1] < x <= v[i]인 i를 반환. 
 배열 내에 x 값이 존재 할 때 : i개 여러개일 경우, 그 중 제일 앞의 인덱스 반환.
 배열 내에 x 값이 존재하지 않을 때 : x보다 큰 첫 번째 인덱스 반환.
@@ -22,7 +21,7 @@ int Lower_Bound(int x){
 	return s;
 }
 
-- upper_bound -
+< upper_bound >
 	
 : v[i - 1] <= x < v[i]인 i를 반환. 
 배열 내에 x 값이 존재 할 때 & 존재하지 않을 때: x보다 큰 첫 번째 인덱스 반환.
@@ -39,7 +38,7 @@ int Upper_Bound(int x){
 	return s;
 }
 
-- 실수형일 때, 이분법 사용법 -
+< 실수형일 때 >
 
 double Binary(){
 	double s = 0, e = n; 
@@ -55,7 +54,7 @@ double Binary(){
 	return s;
 }
 
-- 사용법 -
+< 사용법 >
 
 int main(){
 	cin >> n;
@@ -66,27 +65,7 @@ int main(){
 	int ret = Lower_Bound(x);
 	
 	// 배열 내에 x가 존재한다면 v[ret] = x
-	// 존재하지 않는다면 v[ret] > x인 가장 작은 인덱스 반환.	
+	// 존재하지 않는다면 v[ret] > x인 가장 작은 인덱스 반환.
 }
 
-※ 자료형이 pair일 경우 사용법 
-=> 이미 pair형 끼리 대소를 비교할 수 있는 operator<가 오버로딩 되어 있어야 함.
-	int idx = lower_bound(V.begin(), V.end(), pair<int,int>(V[i].first - S, INF)) - V.begin();
-
-	int idx = lower_bound(V.begin(), V.end(), pair<int,int>(V[i].first - S, INF)) - V.begin();		   // 배열 내에 x값이 존재 할 때 : 그 중 제일 앞 위치 반환
  																									   //     x값이 존재하지 않을 때 : x 보다 큰 첫번째 위치를 반환 
-
-
-	*****************************
-  
-  
-ll s = 0, e = 1000000000000000001LL;
-
-while(s < e){
-	ll mid = (s + e) / 2;
-
-	if(func(times, mid) < n)s = mid + 1; // 부등호에 = 붙이는 것은 문제에 따라 유동적으로
-	else e = mid;
-}
-return e;
-
